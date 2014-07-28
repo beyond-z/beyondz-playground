@@ -3,10 +3,7 @@
  */
 
 @import './base/style';
-
-
 @import "./application/*";
-
 
 // The header showing the logo
 .program-header {
@@ -41,11 +38,11 @@
 
 // Top bar of links to resources like the submission instructions, summer internships opps, etc.
 .program-resources-container {
-  @extend .assignment-header; 
+  @extend .assignment-header;
 }
 
 .program-resources {
-//  @extend .col-sm-offset-4; 
+//  @extend .col-sm-offset-4;
 }
 
 .btn-resources {
