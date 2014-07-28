@@ -3,5 +3,8 @@
  */
 
 @import './base/style';
-
 @import "./login/*";
+
+.form-control, textarea {
+  margin-bottom: 15px;
+}
