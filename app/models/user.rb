@@ -1,18 +1,30 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable,
+         :validatable, :confirmable
+
+  belongs_to :state
+
   has_many :assignments, dependent: :destroy
   has_many :tasks
 
   has_many :coach_students, foreign_key: :coach_id
   has_many :students, through: :coach_students, :source => :student
 
+  before_save { self.email = email.downcase }
+
+  # validates complex email addresses with top-level domains and two letter country domains
+  TOP_LEVEL_DOMAINS = "aero|asia|bike|biz|camera|cat|clothing|com|coop|equipment|estate|eus|gallery|graphics|guru|info|int|holdings|jobs|lighting|mobi|museum|name|net|org|photography|plumbing|post|pro|singles|tel|travel|ventures|xxx"
+  VALID_EMAIL_REGEX = /[a-zA-Z0-9!#$%&'*+\/=?^_{|}~-]+(?:.[a-zA-Z0-9!#$%&'*+\/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-zA-Z]{2}|#{TOP_LEVEL_DOMAINS})\b/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :state_id, presence: true
 
   after_create :create_child_skeleton_rows
+
 
   def name
     "#{first_name} #{last_name}"
