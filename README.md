@@ -17,14 +17,15 @@ start (or please link to a better tutorial in this readme once you find
 one :)
 http://guides.rubyonrails.org/getting_started.html
 
-You must install Postgres (http://postgresapp.com/)
+You must install Postgres (http://postgresapp.com/ for MAC, 
+http://www.postgresql.org/download/ for others)
 and set your PATH in your ~/.bashrc  For example:
 
 	export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 
 and also create a user for the BZ application:
 
-    createuser -s beyondz-playground
+    createuser -s beyondzplayground
 
 After your environment is setup, fork this repository on Github. Then in the location you want the local copy, run:
 
