@@ -296,9 +296,13 @@ section {
 .btn-assignment {
   @extend .btn;
   @extend .btn-warning;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
 }
+
+.btn-assignment:first-of-type {
+  margin-left: 0px;
+}
+
 
 //------------------------------------------
 // Styles for the assignment submission pages.
