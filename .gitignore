@@ -46,5 +46,8 @@
 # this is my server starting shell script that loads the environment vars, nothing anyone else needs to care about
 start.sh
 
-# Project meta-data for Aptana
+# Ignore project meta-data for Aptana
 .project
+
+# Ignore lock files
+*.lock
