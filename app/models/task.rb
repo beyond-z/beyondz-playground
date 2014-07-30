@@ -7,7 +7,10 @@ class Task < ActiveRecord::Base
   has_many :responses, class_name: 'TaskResponse', dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  scope :for_assignment, -> (assignment_id) {
+  # Found syntax error here.  Because I'm a Ruby noob, I'm leaving this comment
+  # in case my "fix" actually changed the semantics.
+  # scope :for_assignment, -> (assignment_id) {
+  scope :for_assignment, -> assignment_id {
     where(assignment_id: assignment_id)
   }
   scope :submitted, -> { where.not(state: :new) }

@@ -214,20 +214,25 @@ section {
   }
 }
 
+.assignment-summary-col {
+  @extend .col-sm-7;
+  @extend .col-md-8;
+}
+
 .assignment-summary-practice {
-  @extend .col-sm-8;
+  @extend .assignment-summary-col;
 
   h3 {
      color: black;
-    }
   }
+}
 
 .assignment-summary-checklist {
-  @extend .col-sm-4;
+  @extend .col-sm-5;
+  @extend .col-md-4;
   color: $bzorange;
   border: 5px solid $bzgrey4;
-  margin-right: 10px;
-  width: 32%;
+  margin-bottom: 10px;
 
   ul.static {
     @extend .list-unstyled;
@@ -236,15 +241,12 @@ section {
   }
   ul {
     @extend .list-unstyled;
-    li {
-      padding: 0 0 5px 0px;
-      display: block;
-      position: relative;
-    }
+    padding-left: 1.5em;
+    text-indent: -1.5em;
     .submittable, .pending-approval, .complete, .incomplete {
       top: 3px;
-      float:left;
-      width: 6%;
+      float: left;
+      width: 1.5em;
     }
     .pending-approval, .complete, .incomplete {
       @extend .glyphicon;
@@ -259,10 +261,6 @@ section {
     }
     .incomplete {
       @extend .glyphicon-unchecked;
-    }
-    .description {
-      float:left;
-      width: 93%;
     }
   }
 
@@ -287,25 +285,24 @@ section {
 }
 
 .assignment-summary-buttons {
-  @extend .assignment-col;
+  @extend .assignment-summary-col;
+  text-align: center;
+  
+  .wrapper {
+    display: inline-block;
+  }
 }
 
-.btn-assign {
-  @extend .col-sm-2;
+.btn-assignment {
   @extend .btn;
   @extend .btn-warning;
+  margin-left: 20px;
 }
 
-.btn-assignment-left {
-  @extend .btn-assign;
-  @extend .col-sm-offset-2;
-  margin-right: 10px;
+.btn-assignment:first-of-type {
+  margin-left: 0px;
 }
 
-.btn-assignment-right {
-  @extend .btn-assign;
-  margin-left: 10px;
-}
 
 //------------------------------------------
 // Styles for the assignment submission pages.
