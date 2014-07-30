@@ -48,6 +48,3 @@ start.sh
 
 # Ignore project meta-data for Aptana
 .project
-
-# Ignore lock files
-*.lock
