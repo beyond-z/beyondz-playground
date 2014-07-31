@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
       render 'completed'
     else
       @incomplete_assignments = user.assignments.for_display\
-        .need_student_attention
+        .need_student_attention.next_available
       @complete_assignments = user.assignments.do_not_need_student_attention\
         .count
 

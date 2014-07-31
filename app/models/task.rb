@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
   has_many :responses, class_name: 'TaskResponse', dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  scope :for_assignment, -> (assignment_id) {
+  scope :for_assignment, ->(assignment_id) {
     where(assignment_id: assignment_id)
   }
   scope :submitted, -> { where.not(state: :new) }
