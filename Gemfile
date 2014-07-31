@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.1.1"
+ruby "2.1.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -16,7 +16,7 @@ gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
   # Use debugger
-  gem 'debugger'
+  #gem 'debugger'
   gem 'better_errors'
   # used with 'better_errors'
   gem 'binding_of_caller'
@@ -24,9 +24,11 @@ end
 
 group :development, :test do
   # makes creating complex objects easier in tests
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   # allows for user browser simulation in integration testing
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 # Use SCSS for stylesheets

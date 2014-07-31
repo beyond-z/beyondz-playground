@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
   scope :for_display, -> {
     joins(:assignment_definition)\
     .includes(:assignment_definition)\
-    .order('assignment_definitions.start_date ASC')
+    .order('assignments.id ASC')
   }
   scope :need_student_attention, -> {
     where(state: [:new, :started, :pending_revision])
@@ -21,6 +21,10 @@ class Assignment < ActiveRecord::Base
   }
   scope :need_coach_attention, -> {
     where(state: [:pending_approval, :pending_revision])
+  }
+
+  scope :next_available, -> {
+    limit(1)
   }
 
 

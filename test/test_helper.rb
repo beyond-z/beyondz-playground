@@ -4,7 +4,7 @@ require 'rails/test_help'
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'capybara/rails'
-
+require 'database_cleaner'
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
-
+  DatabaseCleaner.clean_with(:truncation)
   # Add more helper methods to be used by all tests here...
 end
 
