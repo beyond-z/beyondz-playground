@@ -13,11 +13,12 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   after_create :create_child_skeleton_rows
+  after_create :update_profile_name
 
   def name
     "#{first_name} #{last_name}"
   end
-
+    
   def coach
     CoachStudent.find_by(student_id: id).try(:coach)
   end
@@ -34,7 +35,14 @@ class User < ActiveRecord::Base
   end
 
   def student?
-    applicant_type.nil? || applicant_type.empty?
+    (applicant_type.nil? || applicant_type.empty? || applicant_type != "professional" || applicant_type != "supporter" || applicant_type != "family_member" || applicant_type != "other") && !coach? && !is_administrator
+  end
+  
+  # This will create the profile name for the user that is used
+  # as the identifier to view the profile page.
+  def update_profile_name
+    self.profile_name = "#{first_name}#{last_name}"
+    self.save!
   end
 
   # This will create the skeletons for assignments, tasks,

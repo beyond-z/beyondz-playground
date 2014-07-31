@@ -1,4 +1,6 @@
 BeyondzPlatform::Application.routes.draw do
+
+
   devise_for :users, controllers: { confirmations: 'confirmations' }
 
   root "home#index"
@@ -12,6 +14,7 @@ BeyondzPlatform::Application.routes.draw do
   resources :feedback
   resources :comments
   resources :enrollments, only: [:new, :create]
+  resources :profiles, only: [:show]
 
   resources :assignments, only: [:index, :update, :show] do
     resources :tasks, only: [:update, :show]

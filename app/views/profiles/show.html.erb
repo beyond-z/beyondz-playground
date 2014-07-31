@@ -1,0 +1,67 @@
+<div class="container">
+   <div class="row">
+      <br/>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+         <div class="panel panel-info">
+            <div class="panel-heading">
+               <h3 class="panel-title"><%= @user.name %></h3>
+            </div>
+            <div class="panel-body">
+               <div class="row">
+                  <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                  <br/>
+                  <div class=" col-md-9 col-lg-9 ">
+                     <table class="table table-user-information">
+                        <tbody>
+                           <tr>
+                              <td>First Name:</td>
+                              <td><%= @user.first_name %></td>
+                           </tr>
+                           <tr>
+                              <td>Last Name:</td>
+                              <td><%= @user.last_name %></td>
+                           </tr>
+                           <tr>
+                              <td>Email:</td>
+                              <td><%= @user.email %></td>
+                           </tr>
+                           <% if @user.student? %>
+                           <tr>
+                              <td>Coached By:</td>
+                              <td><%= link_to "#{@user.coach.name}", profile_path(@user.coach.profile_name) %></td>
+                           </tr>
+                           <% end %>
+                           <% if @user.coach? %>
+                           <tr>
+                              <td>Students Coached:</td>
+                              <td>
+                                 <% @user.students.each do |student| %>
+                                 <%= link_to "#{student.name}", profile_path(student.profile_name) %><br/>
+                                 <% end %>
+                              </td>
+                           </tr>
+                           <% end %> 
+                        </tbody>
+                     </table>
+                     <% if owned(@user) && @user.student? %>
+                     <%= link_to "View Completed Assignments", assignments_path(state: 'complete'), :class => 'btn btn-primary' %>
+                     <%= link_to "View Upcoming Assignments", assignments_path(state: 'new'), :class => 'btn btn-primary' %>
+                     <% end %> 
+                  </div>
+               </div>
+            </div>
+            <div class="panel-footer">
+               <% if owned(@user) %>
+               <%= link_to edit_user_registration_path, class: "btn btn-sm btn-warning" do %>
+               <i class="glyphicon glyphicon-edit"></i>
+               <% end %>  
+               <% else %>
+               <%= link_to root_path, class: "btn btn-sm btn-primary" do %>
+               <i class="glyphicon glyphicon-envelope"></i>
+               <% end %>  
+               <% end %> 
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

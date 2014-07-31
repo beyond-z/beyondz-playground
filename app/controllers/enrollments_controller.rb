@@ -18,6 +18,8 @@ class EnrollmentsController < ApplicationController
       :state,
       :keep_updated)
 
+    user[:profile_name]="#{params[:first_name]}#{params[:last_name]}"
+    
     case user[:applicant_type]
     when 'other'
       user[:applicant_details] = params[:other_details]
