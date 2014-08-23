@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-   <%= link_to "Log out [#{current_user.name}]", destroy_user_session_path, :method=>'DELETE' %>
+   <div>Welcome <%= current_user.name %>.</div>
+   <div><%= link_to "Log out", destroy_user_session_path, :method=>'DELETE' %> | <%= link_to "Edit profile", profile_path %></div>
 <% else %>
    <%= link_to 'Log In', new_user_session_path %>
 <% end %>
