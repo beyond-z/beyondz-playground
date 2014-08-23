@@ -15,11 +15,13 @@
   <%= profile_form.text_field :email, :type => 'email', :required => 'required', :class => 'form-control', placeholder: 'Email'%>
 </div>
 
+<% if @user.new_record? -%>
 <div class="form-group">
   <%= profile_form.label  :password %>
   <%= profile_form.password_field :password, :class => 'form-control', required: 'required', placeholder: 'Create a password', pattern: '.{4,}', title: 'make a password at least four characters long' %>
   <!-- <p class="help-block">Enter a password so you can log in later.</p> -->
 </div>
+<% end -%>
 
 <div class="form-group">
   <label style="display: block;">Where do you live?</label>

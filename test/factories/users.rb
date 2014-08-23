@@ -6,5 +6,12 @@ FactoryGirl.define do
     last_name 'User'
     email 'test@beyondz.org'
     password 'test'
+    city 'Smallville'
+    state 'NY'
+    
+    trait :professional do
+      applicant_type 'professional'
+      applicant_details 'Testing'
+    end
   end
 end

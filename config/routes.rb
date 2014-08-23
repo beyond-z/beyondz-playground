@@ -8,6 +8,8 @@ BeyondzPlatform::Application.routes.draw do
   get '/partner', to: 'home#partner'
   get '/supporter_info', to: 'home#supporter_info'
   get '/jobs', to: 'home#jobs'
+  get '/profile', to: 'profile#edit'
+  post '/profile', to: 'profile#update'
 
   resources :feedback
   resources :comments
