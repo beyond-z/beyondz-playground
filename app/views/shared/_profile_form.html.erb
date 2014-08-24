@@ -35,6 +35,7 @@
   </section>
 </div>
 
+<% if @user.new_record? -%>
 <div class="form-group">
   <label>I am a...</label>
   <div>
@@ -87,6 +88,7 @@
     </div>
   </div>
 </div>
+<% end -%>
 
 <!--
 <div class="form-group">
