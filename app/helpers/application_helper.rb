@@ -46,6 +46,17 @@ module ApplicationHelper
     opts = { small: true }.merge(opts)
     modal_html(id, opts)
   end
+  
+  # Render a LinkedIn Profile widget for the given user, if the user has entered a profile url.
+  # See: https://developer.linkedin.com/member-profile-plugin
+  def linkedin_profile_widget(user)
+    if user.linkedin_profile.present?
+      javascript_include_tag('http://platform.linkedin.com/in.js') +
+      javascript_tag('', type: 'IN/MemberProfile', 'data-id' => user.linkedin_profile,
+        'data-format' => 'inline', 'data-related' => 'false')
+    end
+    
+  end
 
   class PermissionDenied < Exception
   end

@@ -1,0 +1,35 @@
+ <div class="wide-section">
+  <div class="section-container">
+    <section>
+      <div class="col-sm-6">
+        <h1>
+          Profile
+        </h1>
+        <h3>
+          Tell us more about you!
+        </h3>
+
+        <div id="profile-form" class="well well-default">
+          <div class="panel-body">
+            <%= form_for :user, url: profile_path, role: 'form' do |f| %>
+              <%= render partial: 'shared/profile_form', object: f %>
+              <div class="form-group">
+                <%= f.label :linkedin_profile %>
+                <%= f.text_field :linkedin_profile, :type => 'url', :class => 'form-control', placeholder: 'http://www.linkedin.com/in/your-profile-url'%>
+                <!-- TODO: This needs instuctions on how to sign up for LinkedIn, *why* to sign up for LinkedIn, and how to find your profile URL -->
+              </div>
+              <div class="form-group">
+                <button type="submit" class="button-primary">Update</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+  
+  
+

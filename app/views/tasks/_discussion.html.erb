@@ -2,8 +2,10 @@
   <h4>Task Discussion</h4>
   <% if @current_user.coach? %>
     <p>Communicate with your student.</p>
+    <%= linkedin_profile_widget(@task.user) %>
   <% else %>
     <p>Communicate with your coach. Ask for help or comment here.</p>
+    <%= linkedin_profile_widget(@task.user.coach) %>
   <% end %>
   
   <%= render 'shared/comments', item: @task %>
