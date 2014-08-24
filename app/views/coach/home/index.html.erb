@@ -28,6 +28,7 @@
 
     <% if @focused_student %>
       <h2>Recent activity by <%= link_to @focused_student.name, assignments_path(:student => @focused_student.id) %></h2>
+      <%= linkedin_profile_widget(@focused_student) %>
     <% elsif @focused_assignment %>
       <h2>Recent activity on <%= @focused_assignment.title %></h2>
     <% else %>
